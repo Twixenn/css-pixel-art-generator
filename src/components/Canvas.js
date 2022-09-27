@@ -17,6 +17,7 @@ function Canvas({imgSrc, setColors}) {
         // Add image to canvas when loaded
         img.addEventListener("load", () => {
             const ratio = canvasRef.current.width / img.width;
+            canvasRef.current.height = img.height * ratio;
             ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
             ctx.drawImage(img, 0, 0, img.width * ratio, img.height * ratio);
 
@@ -49,7 +50,7 @@ function Canvas({imgSrc, setColors}) {
     }
 
     return (
-        <canvas height={500} width={500} ref={canvasRef}></canvas>
+        <canvas width={500} ref={canvasRef}></canvas>
     )
 }
 

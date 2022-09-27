@@ -27,7 +27,13 @@ function PixelArt({pixels}) {
     }, [pixels])
 
     return (
-        <div className="pixel-artboard">
+        <div 
+            className="pixel-artboard"
+            style={{
+                height: pixels?.length * PIXEL_WIDTH,
+                width: pixels?.[0]?.length * PIXEL_WIDTH
+            }}
+        >
             <div 
                 className="pixel" 
                 style={{
