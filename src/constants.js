@@ -1,0 +1,1 @@
+export const PIXEL_WIDTH = 10;
