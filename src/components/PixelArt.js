@@ -10,11 +10,20 @@ function PixelArt({pixels}) {
         if(!pixels) return;
 
         // Loop through each pixel and create a box-shadow value representing it
-        const shadow = pixels.map((row, rowIndex) => 
+        const s = pixels.map((row, rowIndex) => 
             row.map((color, columnIndex) => `${(columnIndex + 1) * PIXEL_WIDTH}px ${rowIndex * PIXEL_WIDTH}px ${color}`).join(", ")
         ).join(", ");
 
-        setShadow(shadow);
+        // Copy styling to clipboard
+        const data = `width: ${PIXEL_WIDTH}px;\nheight: ${PIXEL_WIDTH}px;\nbox-shadow: ${s}`;
+
+        navigator.clipboard.writeText(data).then(() => {
+            console.log("Copied to clipboard successfully!");
+        }, function() {
+            console.error("Unable to write to clipboard. :-(");
+        });
+
+        setShadow(s);
     }, [pixels])
 
     return (
