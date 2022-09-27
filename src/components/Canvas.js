@@ -12,8 +12,9 @@ function Canvas({imgSrc, setColors}) {
         const img = new Image();
         img.src = imgSrc;
         img.addEventListener("load", () => {
+            const ratio = canvasRef.current.width / img.width;
             ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-            ctx.drawImage(img, 0, 0, img.width * 0.3, img.height * 0.3);
+            ctx.drawImage(img, 0, 0, img.width * ratio, img.height * ratio);
 
             getPixelArt(ctx);
         });
