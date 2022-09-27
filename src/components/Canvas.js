@@ -11,6 +11,8 @@ function Canvas({imgSrc, setColors}) {
 
         const img = new Image();
         img.src = imgSrc;
+
+        // Add image to canvas when loaded
         img.addEventListener("load", () => {
             const ratio = canvasRef.current.width / img.width;
             ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
@@ -23,6 +25,7 @@ function Canvas({imgSrc, setColors}) {
     function getPixelArt(ctx) {
         let colors = [];
 
+        // Loop through the canvas in PIXEL_WIDTH-sized chunks
         for(let i = 0; i < (canvasRef.current.height / PIXEL_WIDTH); i++) {
             colors.push([[]]);
             for(let j = 0; j < (canvasRef.current.width / PIXEL_WIDTH); j++) {
@@ -34,6 +37,7 @@ function Canvas({imgSrc, setColors}) {
         setColors(colors);
     }
 
+    // Get color value of the given chunk of the canvas
     function getPixelValue(ctx, top, left, width) {
         const imageData = ctx.getImageData(left, top, width, width);
         const data = imageData.data;

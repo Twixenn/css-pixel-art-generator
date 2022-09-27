@@ -6,6 +6,7 @@ function DragAndDrop({onFileLoaded}) {
     const [error, setError] = React.useState(null);
     const [dragState, setDragState] = React.useState(null);
 
+    // Prevent browser default
     function preventDefaults(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -20,6 +21,7 @@ function DragAndDrop({onFileLoaded}) {
 
         setError(false);
 
+        // Just get the first file uploaded
         if([...files].length >= 1)
         {
             handleFile(files[0]);
@@ -27,6 +29,7 @@ function DragAndDrop({onFileLoaded}) {
         
     }
 
+    // Read given file as DataURL
     function handleFile (file) {
         let reader = new FileReader();
 
