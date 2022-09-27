@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
-import { PIXEL_WIDTH } from "../constants";
+
+import styles from "../sass/constants.scss";
+const PIXEL_WIDTH = parseInt(styles.PIXEL_WIDTH);
 
 function Canvas({imgSrc, setColors}) {
     const canvasRef = React.useRef(null);

@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
-import { PIXEL_WIDTH } from "../constants";
+
+import styles from "../sass/constants.scss";
+const PIXEL_WIDTH = parseInt(styles.PIXEL_WIDTH);
 
 function PixelArt({pixels}) {
     const [shadow, setShadow] = React.useState(null);
@@ -9,7 +11,7 @@ function PixelArt({pixels}) {
 
         // Loop through each pixel and create a box-shadow value representing it
         const shadow = pixels.map((row, rowIndex) => 
-            row.map((color, columnIndex) => `${columnIndex * PIXEL_WIDTH}px ${rowIndex * PIXEL_WIDTH}px ${color}`).join(", ")
+            row.map((color, columnIndex) => `${(columnIndex + 1) * PIXEL_WIDTH}px ${rowIndex * PIXEL_WIDTH}px ${color}`).join(", ")
         ).join(", ");
 
         setShadow(shadow);
