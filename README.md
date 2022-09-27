@@ -17,7 +17,7 @@ The following art has been created using this app using images from Pexels.
 ![neon](./docs/art2.png)
 ![game over](./docs/art3.png)
 
- ---
+---
 
 ## Available Scripts
 

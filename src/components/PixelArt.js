@@ -3,11 +3,14 @@ import React, { useEffect } from "react";
 import styles from "../sass/constants.scss";
 const PIXEL_WIDTH = parseInt(styles.PIXEL_WIDTH);
 
-function PixelArt({pixels}) {
+function PixelArt({pixels, clear}) {
     const [shadow, setShadow] = React.useState(null);
 
     useEffect(() => {
-        if(!pixels) return;
+        if(!pixels) {
+            setShadow(null);
+            return;
+        }
 
         // Loop through each pixel and create a box-shadow value representing it
         const s = pixels.map((row, rowIndex) => 
@@ -42,6 +45,7 @@ function PixelArt({pixels}) {
                     height: PIXEL_WIDTH
                 }}
             />
+            {shadow && <button onClick={clear}>Clear images</button>}
         </div>
     )
 }

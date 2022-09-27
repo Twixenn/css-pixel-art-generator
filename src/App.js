@@ -12,11 +12,16 @@ function App() {
   const [imgSrc, setImgSrc] = React.useState(null);
   const [colors, setColors] = React.useState(null);
 
+  function clear() {
+    setImgSrc(null);
+    setColors(null);
+  }
+
   return (
     <div className={classnames("App", {"has-img": imgSrc})}>
       <DragAndDrop onFileLoaded={setImgSrc} />
       <Canvas imgSrc={imgSrc} setColors={setColors} />
-      <PixelArt pixels={colors} />
+      <PixelArt pixels={colors} clear={clear} />
     </div>
   );
 }

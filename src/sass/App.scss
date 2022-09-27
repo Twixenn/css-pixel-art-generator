@@ -46,3 +46,25 @@ canvas {
     left: 50%;
     transform: translate(-50%, -50%) translateX(-($pixel-width + px));
 }
+
+button {
+    background-color: #00DAC5;
+    position: relative;
+    z-index: 20;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    transition: 0.2s all ease;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) translateY(30px) translateY(100%);
+
+    &:hover {
+        background-color: darken(#00DAC5, 5%);
+    }
+}
