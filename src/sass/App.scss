@@ -1,16 +1,41 @@
 body {
-    background-color: black;
+    background-color: #121212;
+}
+
+.App {
+    &.has-img {
+        .drag-and-drop {
+            display: none;
+        }
+    }
 }
 
 .drag-and-drop {
-    border: 2px solid red;
-    height: 200px;
-    width: 200px;
+    height: 500px;
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    background-color: rgba(#00DAC5, 0.1);
+
+    border: 2px dashed rgba(#00DAC5, 0.5);
+    border-radius: 5px;
+
+    transition: all 0.3s ease;
+
+    &.hover {
+        background-color: rgba(#00DAC5, 0.2);
+        border: 2px solid rgba(#00DAC5, 0.5);
+    }
 }
 
 canvas {
     height: 500px;
     width: 500px;
+    opacity: 0;
 }
 
 .pixel-artboard {

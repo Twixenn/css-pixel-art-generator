@@ -1,7 +1,10 @@
 import React from "react";
 
+import classnames from "classnames";
+
 function DragAndDrop({onFileLoaded}) {
     const [error, setError] = React.useState(null);
+    const [dragState, setDragState] = React.useState(null);
 
     function preventDefaults(e) {
         e.preventDefault();
@@ -10,6 +13,8 @@ function DragAndDrop({onFileLoaded}) {
 
     function handleDrop (e) {
         preventDefaults(e);
+        setDragState(null);
+
         const dt = e.dataTransfer;
         const files = dt.files;
 
@@ -38,9 +43,9 @@ function DragAndDrop({onFileLoaded}) {
     }
 
     return (
-        <div className="drag-and-drop"
-            onDragEnter={preventDefaults}
-            onDragLeave={preventDefaults}
+        <div className={classnames("drag-and-drop", dragState)}
+            onDragEnter={(e) => { preventDefaults(e); setDragState("hover"); }}
+            onDragLeave={(e) => { preventDefaults(e); setDragState(null); }}
             onDragOver={preventDefaults}
             onDrop={handleDrop}
         >
